@@ -1,17 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <user-list></user-list>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import UserList from './components/user/UserList.vue';
 
 export default {
   name: 'App',
+  provide() {
+    return { users: this.users };
+  },
   components: {
-    HelloWorld
-  }
-}
+    UserList,
+  },
+  data() {
+    return {
+      users: [
+        { id: 0, firstName: 'Thibaud', lastName: 'Dervily', age: 39 },
+        { id: 1, firstName: 'Marco', lastName: 'Polo', age: 34 },
+        { id: 2, firstName: 'Hubert', lastName: 'Dupont', age: 23 },
+        { id: 3, firstName: 'David', lastName: 'Luby', age: 46 },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
